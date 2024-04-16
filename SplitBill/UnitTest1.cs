@@ -1,59 +1,34 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Split_Lib; // Assuming Split_Lib is the namespace of your TipCalculator class
+using Split_Lib; 
 
-namespace SplitBill // Remove the semicolon here
+namespace SplitBill
 {
     [TestClass]
-    public class SplitCalculatorTests
+    public class Splitcalc
     {
         [TestMethod]
-        public void SplitAmount_EqualSplit_ShouldReturnCorrectAmount()
+        public void SplitAmount_WhenAmountIs100AndNumberOfPeopleIs5_ShouldReturn20()
         {
-            spl calculator = new TipCalculator();
-            decimal totalAmount = 100.00m;
-            int numberOfPeople = 5;
-            decimal expectedSplitAmount = 20.00m;
+          
+            Split_Lib.Splitcalc calculator = new Split_Lib.Splitcalc();
 
-            decimal actualSplitAmount = calculator.SplitAmount(totalAmount, numberOfPeople);
+           
+            decimal result = calculator.SplitAmount(100, 5);
 
-            Assert.AreEqual(expectedSplitAmount, actualSplitAmount);
+            
+            Assert.AreEqual(20, result);
         }
-
-        [TestMethod]
-        public void CalculateTip_EqualSplit_ShouldReturnCorrectAmounts()
+       [TestMethod]
+        public void SplitAmount_WhenAmountIs50AndNumberOfPeopleIs2_ShouldReturn25()
         {
-            TipCalculator calculator = new TipCalculator();
-            var mealCosts = new Dictionary<string, decimal>
-            {
-                { "Alice", 25.50m },
-                { "Bob", 30.00m },
-                { "Charlie", 22.75m }
-            };
-            float tipPercentage = 15;
-            var expectedTipAmounts = new Dictionary<string, decimal>
-            {
-                { "Alice", 2.70m },
-                { "Bob", 3.15m },
-                { "Charlie", 2.38m }
-            };
+           
+            
+            Split_Lib.Splitcalc  calculator = new Split_Lib.Splitcalc();
 
-            var actualTipAmounts = calculator.CalculateTip(mealCosts, tipPercentage);
+            
+            decimal result = calculator.SplitAmount(50, 2);
 
-            CollectionAssert.AreEqual(expectedTipAmounts, actualTipAmounts);
-        }
-
-        [TestMethod]
-        public void TipPerPerson_EqualSplit_ShouldReturnCorrectAmount()
-        {
-            TipCalculator calculator = new TipCalculator();
-            decimal price = 100.00m;
-            int numberOfPatrons = 5;
-            float tipPercentage = 15;
-            decimal expectedTipPerPerson = 3.00m;
-
-            decimal actualTipPerPerson = calculator.TipPerPerson(price, numberOfPatrons, tipPercentage);
-
-            Assert.AreEqual(expectedTipPerPerson, actualTipPerPerson);
+           
+            Assert.AreEqual(25, result);
         }
     }
 }
