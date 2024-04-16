@@ -30,5 +30,19 @@ namespace SplitBill
            
             Assert.AreEqual(25, result);
         }
+        [TestMethod]
+        public void SplitAmount_WhenAmountIs40AndNumberOfPeopleIs2_ShouldReturn20()
+        {
+           
+            
+            Split_Lib.Splitcalc  calculator = new Split_Lib.Splitcalc();
+
+            
+            decimal result = calculator.SplitAmount(40, 2);
+
+           
+            Assert.AreEqual(20, result);
+        }
+        
     }
 }
